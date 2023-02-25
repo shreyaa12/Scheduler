@@ -2,23 +2,32 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="Display.css">
     <title>To-Do List</title>
 </head>
 <body>
 <h1>TodoList</h1>
 <form>
-<input type='text' id='name' placeholder='New Task'>
-<select id='category'>
-  <option>Home</option>
-  <option>Work</option>
-  <option>Hobby</option>
-  <option>Urgent</option>
-</select>
-<a href='#' id='add-btn' onclick="addItem()">Add Task</a>
+    <input type='text' id='name' placeholder='New Task'>
+    <select id='todoType'>
+        <option value="Home">Home</option>
+        <option value="Work">Work</option>
+        <option value="Hobby">Hobby</option>
+        <option value="Urgent">Urgent</option>
+    </select>
+    <button type="button" id='add-btn' onclick="addItem()">+</button>
 </form>
-<ul id='list'>
-</ul>
+<table id='list' class='table' style="visibility:hidden">
+    <thead>
+        <tr>
+            <th>Task</th>
+            <th>Category</th>   
+        </tr>
+    </thead>
+</table>
 <script src="todo.js"></script>
 </body>
 </html>
