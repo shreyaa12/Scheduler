@@ -9,12 +9,11 @@ const categories = {
   Urgent: "#dc3545",
 };
 todoList.appendChild(tbody);
-
+//ADD TASK
 const addItem = () => {
   todoList.style.visibility = "visible";
   const taskText = newItem.value.trim();
-  const todoVal = todoType.value.trim();
-  
+  const todoVal = todoType.value.trim(); 
   if (!taskText || !todoVal) {
     alert("Please enter a task and a task type.");
     return;
