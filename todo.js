@@ -10,14 +10,16 @@ const categories = {
 };
 todoList.appendChild(tbody);
 
-let addItem= function(){
- todoList.style.visibility = "visible";
+const addItem = () => {
+  todoList.style.visibility = "visible";
   const taskText = newItem.value.trim();
-  let todoVal = todoType.value;
+  const todoVal = todoType.value.trim();
+  
   if (!taskText || !todoVal) {
     alert("Please enter a task and a task type.");
     return;
   }
+  //CREATING A ROW FOR THE NEW ADDED TASK
   const tr = document.createElement("tr");
   const taskTd = document.createElement("td");
   const task = document.createTextNode(taskText);
@@ -34,29 +36,32 @@ let addItem= function(){
   const categoryColor = categories[todoVal] || "#fff";
   tr.style.backgroundColor = categoryColor;
   deleteBtn.innerHTML = "X";
-  deleteBtn.onclick = function () {
+  
+  deleteBtn.onclick = () => {
     const confirmDlt = confirm("Are you sure you want to delete the task?");
     if (confirmDlt) {
       tbody.removeChild(tr);
     }
   };
-  editBtn.onclick = function () {
+  
+  editBtn.onclick = () => {
     const editText = prompt("Edit task or Edit Type Task:", `${task.nodeValue},${todoVal}`);
+    
     if (editText) {
       const [editedTask, editedType] = editText.split(",");
-      const isCategoryExists = categories.hasOwnProperty(editedType);
+      const isCategoryExists = categories.hasOwnProperty(editedType.trim());
+      
       if (!isCategoryExists) {
         alert(`Category '${editedType}' does not exist.`);
         return;
-      }else{
+      } else {
         task.nodeValue = editedTask.trim();
-        todoVal = editedType.trim();
         todoTypeSpan.textContent = editedType.trim();
-        tr.style.backgroundColor = categories[editedType] || "#fff";
+        tr.style.backgroundColor = categories[editedType.trim()] || "#fff";
       }
-      
     }
   };
+  
   taskTd.appendChild(task);
   todoTypeTd.appendChild(todoTypeSpan);
   deleteBtnTd.appendChild(deleteBtn);
@@ -65,4 +70,4 @@ let addItem= function(){
   tbody.appendChild(tr);
   newItem.value = "";
   todoType.value = "";
-}
+};
