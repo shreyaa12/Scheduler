@@ -36,21 +36,19 @@ const addItem = () => {
   const categoryColor = categories[todoVal] || "#fff";
   tr.style.backgroundColor = categoryColor;
   deleteBtn.innerHTML = "X";
-  
+  //DELETE FUNCTION
   deleteBtn.onclick = () => {
     const confirmDlt = confirm("Are you sure you want to delete the task?");
     if (confirmDlt) {
       tbody.removeChild(tr);
     }
   };
-  
+  //EDIT BUTTON
   editBtn.onclick = () => {
     const editText = prompt("Edit task or Edit Type Task:", `${task.nodeValue},${todoVal}`);
-    
     if (editText) {
       const [editedTask, editedType] = editText.split(",");
       const isCategoryExists = categories.hasOwnProperty(editedType.trim());
-      
       if (!isCategoryExists) {
         alert(`Category '${editedType}' does not exist.`);
         return;
@@ -61,7 +59,6 @@ const addItem = () => {
       }
     }
   };
-  
   taskTd.appendChild(task);
   todoTypeTd.appendChild(todoTypeSpan);
   deleteBtnTd.appendChild(deleteBtn);
